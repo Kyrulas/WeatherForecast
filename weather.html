@@ -5,75 +5,95 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="weather.css"
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
+		<script type="text/javascript" src="jquery-2.1.4.js"></script>
+			<script type="text/javascript" src="dateFormat.js"></script>
+		<script type="text/javascript" src="weather.js"></script>
+
 	</head>
+	<script type="text/javascript">
+	(function(){
+		getLocation();
+	})();
+
+	function getLocation() {
+	    if (navigator.geolocation) {
+	        navigator.geolocation.getCurrentPosition(showPosition);
+	    } else {
+	        x.innerHTML = "Geolocation is not supported by this browser.";
+	    }
+	}
+
+	function showPosition(position) {
+	  	console.log("latitude " + position.coords.latitude + 
+	    " Longitude: " + position.coords.longitude); 
+	}
+	
+	</script>
 	<body>
-		
+		<div id="weather">
 		<ul class="weather_table">
 
 		<li class="weather_block">
-			<h3>Monday</h3>
+			<h3 id="day_1">Monday</h3>
 			<div class="pictures">
 				<div class="date">
-					<span class="temperature">*30</span>
-					<span class="date_number">05.07</span>
+					<span class="temperature" id="day_1_temp">*30</span>
+					<span class="date_number" id="day_1_data">05.07</span>
 					<img src="sun.png" alt="sun">
 				</div>
 			</div>
 			<ul class="features">
-				<li>bright</li>
-				<li>+30 in morning</li>
-				<li>+17 in night</li>
-				<li>42%</li>
+				<li id="day_1_descr">bright</li>
+				<li id="day_1_morning">+30 in morning</li>
+				<li id="day_1_night">+17 in night</li>
+				<li id="day_1_humidity">42%</li>
 			</ul>
-			<div class="footer">
-				<a href="#" class="city_button">Lviv</a>
-			</div>
+			
 		</li>
 		
 		<li class="weather_block">
-			<h3>Tuesday</h3>
+			<h3 id="day_2">Tuesday</h3>
 			<div class="pictures">
 				<div class="date">
-					<span class="temperature">*31</span>
-					<span class="date_number">06.07</span>
+					<span class="temperature" id="day_2_temp">*31</span>
+					<span class="date_number" id="day_2_data">06.07</span>
 					<img src="sun.png" alt="sun">
 				</div>
 			</div>
 			<ul class="features">
-				<li>bright</li>
-				<li>+33 in morning</li>
-				<li>+19 in night</li>
-				<li>45%</li>
+				<li id="day_2_descr">bright</li>
+				<li id="day_2_morning">+33 in morning</li>
+				<li id="day_2_night">+19 in night</li>
+				<li id="day_2_humidity">45%</li>
 			</ul>
-			<div class="footer">
-				<a href="#" class="city_button">Lviv</a>
-			</div>
+			
 		</li>
 
 		<li class="weather_block">
-			<h3>Wensday</h3>
+			<h3 id="day_3">Wednesday</h3>
 			<div class="pictures">
 				<div class="date">
-					<span class="temperature">*32</span>
-					<span class="date_number">07.07</span>
+					<span class="temperature" id="day_3_temp">*32</span>
+					<span class="date_number" id="day_3_data">07.07</span>
 					<img src="cloud.png" alt="sun">
 				</div>
 			</div>
 			<ul class="features">
-				<li>bright</li>
-				<li>+28 in morning</li>
-				<li>+15 in night</li>
-				<li>38%</li>
+				<li id="day_3_descr">bright</li>
+				<li id="day_3_morning">+28 in morning</li>
+				<li id="day_3_night">+15 in night</li>
+				<li id="day_3_humidity">38%</li>
 			</ul>
-			<div class="footer">
-				<a href="#" class="city_button">Lviv</a>
-			</div>
+			
 		</li>
-
-		<li></li>
-		<li></li>
 		</ul>
-		
+
+		<div class="btn ps_prev">
+			<img src="http://demo.techglimpse.com/prev-next-buttons/left.png">
+		</div>
+		<div class="btn ps_next">
+			<img src="http://demo.techglimpse.com/prev-next-buttons/right.png">
+		</div>
+		</div>
 	</body>
 </html>

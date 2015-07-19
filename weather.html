@@ -10,36 +10,31 @@
 		<script type="text/javascript" src="weather.js"></script>
 
 	</head>
-	<script type="text/javascript">
-	(function(){
-		getLocation();
-	})();
-
-	function getLocation() {
-	    if (navigator.geolocation) {
-	        navigator.geolocation.getCurrentPosition(showPosition);
-	    } else {
-	        x.innerHTML = "Geolocation is not supported by this browser.";
-	    }
-	}
-
-	function showPosition(position) {
-	  	console.log("latitude " + position.coords.latitude + 
-	    " Longitude: " + position.coords.longitude); 
-	}
-	
-	</script>
 	<body>
-		<div id="weather">
-		<ul class="weather_table">
 
+	<div id="city">
+		<p>Weather in <span id="city_name"> </span></p>
+		<select id="city_list">
+			<option value="702550">Lviv</option>
+			<option value="696050">Kyiv</option>
+			<option value="706483">Kharkiv</option>
+			<option value="707471">Ivano-Frankivsk</option>
+			<option value="691650">Ternopil</option>
+			<option value="689558">Vinnytsya</option>
+			<option value="702569">Lutsk</option>
+			<option value="710735">Chernihiv</option>
+			<option value="698740">Odessa</option>
+		</select>
+	</div>
+	<div id="weather">
+		<ul class="weather_table">
 		<li class="weather_block">
 			<h3 id="day_1">Monday</h3>
 			<div class="pictures">
 				<div class="date">
 					<span class="temperature" id="day_1_temp">*30</span>
 					<span class="date_number" id="day_1_data">05.07</span>
-					<img src="sun.png" alt="sun">
+					<img id="day_1_img" src="" alt="sun">
 				</div>
 			</div>
 			<ul class="features">
@@ -57,7 +52,7 @@
 				<div class="date">
 					<span class="temperature" id="day_2_temp">*31</span>
 					<span class="date_number" id="day_2_data">06.07</span>
-					<img src="sun.png" alt="sun">
+					<img  id="day_2_img" src="" alt="sun">
 				</div>
 			</div>
 			<ul class="features">
@@ -75,7 +70,7 @@
 				<div class="date">
 					<span class="temperature" id="day_3_temp">*32</span>
 					<span class="date_number" id="day_3_data">07.07</span>
-					<img src="cloud.png" alt="sun">
+					<img id="day_3_img" src="" alt="cloud">
 				</div>
 			</div>
 			<ul class="features">
@@ -84,16 +79,14 @@
 				<li id="day_3_night">+15 in night</li>
 				<li id="day_3_humidity">38%</li>
 			</ul>
-			
 		</li>
 		</ul>
-
 		<div class="btn ps_prev">
 			<img src="http://demo.techglimpse.com/prev-next-buttons/left.png">
 		</div>
 		<div class="btn ps_next">
 			<img src="http://demo.techglimpse.com/prev-next-buttons/right.png">
 		</div>
-		</div>
+	</div>
 	</body>
 </html>

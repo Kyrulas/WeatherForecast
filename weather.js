@@ -1,16 +1,15 @@
 var weatherObject ;
+var position = 0;
 
 (function(){
-	getWeatherData("http://api.openweathermap.org/data/2.5/forecast/daily?id=2643743&units=metric&cnt=9&lang=ua");
+	getWeatherData("http://api.openweathermap.org/data/2.5/forecast/daily?id=702550&units=metric&cnt=9&lang=ua");
 })()
-
-
-//702550
 
 function getWeatherData(url){
 		function resultFunction(data){
 			weatherObject = data;
-			populateData(data,0);
+			populateData(data,position);
+			$(".ps_prev").hide();
 		}
 
 	$.ajax({
@@ -18,9 +17,8 @@ function getWeatherData(url){
 	}).done(resultFunction)
 }
 
-
-
 function populateData(weatherData,fromElemt){
+	$("#city_name").text(weatherData.city.name);
 	//populating temperature data for each day
 	for (var i = 1; i <= 3; i++) {
 		$("#day_"+i+"_temp").text(Math.round(weatherData.list[fromElemt+i-1].temp.day )+ '\xB0');
@@ -40,23 +38,47 @@ function populateData(weatherData,fromElemt){
 
 		//humidity
 		$("#day_"+i+"_humidity").text(weatherData.list[fromElemt+i-1].humidity + '% (humidity)');
+
+		//image
+		$("#day_"+i+"_img").attr("src","img/" + weatherData.list[fromElemt+i-1].weather[0].icon + ".png");
 	}
 
 }
 
-function nextThreeDays(){
-	populateData(weatherObject,3);
+function nextThreeDays(){ 
+	if(position < 5){
+		populateData(weatherObject,position += 3);
+		$(".ps_prev").show();	
+	}
+	if(position === 6){
+		$(".ps_next").hide();
+	}
+	
+	
 }
 
 function previousThreeDays(){
-	populateData(weatherObject,0);
+	if(position > 0){
+		populateData(weatherObject,position -=3);
+		$(".ps_next").show();
+	}
+	if(position === 0){
+		$(".ps_prev").hide();
+	}
+	
 }
-
 
 $(document).ready(function(){
 	$('.ps_next').click(nextThreeDays);
 
 	$('.ps_prev').click(previousThreeDays);
+
+	$('#city_list').change(function(){
+		getWeatherData("http://api.openweathermap.org/data/2.5/forecast/daily?id=" + this.value + "&units=metric&cnt=9&lang=ua");
+		$(".ps_next").show();
+		position = 0;	
+	});
 });
+ 
 
 

@@ -2,7 +2,7 @@ var weatherObject ;
 var position = 0;
 
 (function(){
-	getWeatherData("http://api.openweathermap.org/data/2.5/forecast/daily?id=702550&units=metric&cnt=9&lang=ua");
+	getWeatherData("http://api.openweathermap.org/data/2.5/forecast/daily?id=702550&units=metric&cnt=9&lang=ua&appid=67fb7a5ab3e396a166980570bda4f133");
 })()
 
 function getWeatherData(url){
@@ -74,7 +74,7 @@ $(document).ready(function(){
 	$('.ps_prev').click(previousThreeDays);
 
 	$('#city_list').change(function(){
-		getWeatherData("http://api.openweathermap.org/data/2.5/forecast/daily?id=" + this.value + "&units=metric&cnt=9&lang=ua");
+		getWeatherData("http://api.openweathermap.org/data/2.5/forecast/daily?id=" + this.value + "&units=metric&cnt=9&lang=ua&appid=67fb7a5ab3e396a166980570bda4f133");
 		$(".ps_next").show();
 		position = 0;	
 	});
